@@ -17,13 +17,13 @@ class _AuthenticateScreenState extends State<AuthenticateScreen > {
   bool loading = false;
 
   final emailController = TextEditingController();
-  //final nameController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
   bool showSignIn = true;
 
   @override
   void dispose() {
-    //nameController.dispose();
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     showSignIn = !showSignIn;
@@ -35,7 +35,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen > {
     _formKey.currentState?.reset();
     error = '';
       emailController.text = '';
-   //   nameController.text = '';
+      nameController.text = '';
       passwordController.text = '';
       showSignIn = !showSignIn;
     });
@@ -69,16 +69,14 @@ class _AuthenticateScreenState extends State<AuthenticateScreen > {
                 key: _formKey,
                 child: Column(
                   children: [
-                //    !showSignIn
-                      //  ? 
-                    //     TextFormField(
-                    //   //      controller: nameController,
-                    //         decoration: textInputDecoration.copyWith(hintText: 'name'),
-                    //         validator: (value) =>
-                    //             value == null || value.isEmpty ? "Enter a name" : null,
-                    //       )
-                    //     : Container(),
-                    // !showSignIn ? SizedBox(height: 10.0) : Container(),
+                    !showSignIn ? TextFormField(
+                        controller: nameController,
+                        decoration: textInputDecoration.copyWith(hintText: 'name'),
+                        validator: (value) =>
+                                 value == null || value.isEmpty ? "Enter a name" : null,
+                      ) //: null,
+                      : Container(),
+                    !showSignIn ? SizedBox(height: 10.0) : Container(),
                     TextFormField(
                       controller: emailController,
                       decoration: textInputDecoration.copyWith(hintText: 'email'),
@@ -105,13 +103,13 @@ class _AuthenticateScreenState extends State<AuthenticateScreen > {
                           setState(() => loading = true);
                           var password = passwordController.value.text;
                           var email = emailController.value.text;
-                            //var name = nameController.value.text;
+                          var name = nameController.value.text;
 
                             //  todo to call firebase authen
                           //dynamic result = null;
                           dynamic result = showSignIn
                             ? await _auth.signInWithEmailAndPassword(email, password)
-                            : await _auth.registerWithEmailAndPassword(email, password);
+                            : await _auth.registerWithEmailAndPassword(name, email, password);
                           if (result == null) {
                             setState(() {
                               loading = false;

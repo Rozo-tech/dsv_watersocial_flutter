@@ -1,6 +1,7 @@
+import 'package:dsv_watersocial/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:dsv_watersocial/models/user.dart';
-//import 'package:flutter_firebase/services/database.dart';
+
 
 //import 'notification_service.dart';
 
@@ -30,8 +31,8 @@ class AuthenticationService {
     try {
       UserCredential result =
           await _auth.signInWithEmailAndPassword(email: email, password: password);
-      User user = result.user;
-      //User? user = result.user;
+      //User user = result.user;
+      User? user = result.user;
       //return user;
       return _userFromFirebaseUser(user);
     } catch (exception) {
@@ -40,19 +41,19 @@ class AuthenticationService {
     }
   }
   
-  Future registerWithEmailAndPassword(String email, String password) async {
-  //Future registerWithEmailAndPassword(String name, String email, String password) async {
+  //Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(String name, String email, String password) async {
     try {
       UserCredential result =
           await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      User user = result.user;
+        User user = result.user;
       //User? user = result.user;
 
       //TODO Store new user in Firestore
       // if (user == null) {
       //   throw Exception("No user found");
       // } else {
-      //   await DatabaseService(user.uid).saveUser(name, 0);
+          await DatabaseService(user.uid).saveUser(name, 0);
 
       //   return _userFromFirebaseUser(user);
       // }
