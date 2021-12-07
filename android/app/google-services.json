@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "203647934604",
+    "project_id": "flutter-firebase-9e215",
+    "storage_bucket": "flutter-firebase-9e215.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203647934604:android:dd12f71c9109222c3a5ba9",
+        "android_client_info": {
+          "package_name": "com.rozo.dsvwatersocial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203647934604-49034d8o8l73b0bgsr4934q0mt8nr1dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPrZUdX2OrIYHS1N5dQeG6dBeHnoXflUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203647934604-49034d8o8l73b0bgsr4934q0mt8nr1dh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
